@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="{{url_for('usuarios.novo')}}">Adicionar novo</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nome</th>
+                <th>botões</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nome}}</td>
+                <td><a href="{{url_for('usuarios.editar', id=usuario.id)}}">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

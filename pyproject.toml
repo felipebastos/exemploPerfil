@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "exemploperfil"
+version = "0.1.0"
+description = "Projeto exemplo para ajudar a turma de TAP e DAD 2021.1"
+authors = ["Felipe Bastos Nunes <felipebastos@ifce.edu.br>"]
+license = "GPL-3.0"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "^2.0.2"
+flaskstarter = "^0.4.5"
+Flask-SQLAlchemy = "^2.5.1"
+Flask-Migrate = "^3.1.0"
+dynaconf = "^3.1.7"
+toml = "^0.10.2"
+
+[tool.poetry.dev-dependencies]
+black = "^21.9b0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
