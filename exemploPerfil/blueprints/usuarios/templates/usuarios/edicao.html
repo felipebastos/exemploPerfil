@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    {% with mensagens = get_flashed_messages() %}
+        {% for mensagem in mensagens %}
+            <div style="border:1px solid black;border-radius: 5px;">{{mensagem}}</div>
+        {% endfor %}
+    {% endwith %}
+
     <form action="{{url_for('usuarios.atualiza')}}" method="post">
         Você está atualizando o usuário de id {{quem.id}} que tem o nome {{quem.nome}}. <br>
         <input type="hidden" name="id" value="{{quem.id}}">

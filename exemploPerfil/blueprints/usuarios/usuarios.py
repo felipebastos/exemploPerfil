@@ -1,7 +1,9 @@
 from flask import Blueprint, request
-from flask.helpers import url_for
+from flask.helpers import flash, url_for
 from flask.templating import render_template
 from werkzeug.utils import redirect
+
+from sqlalchemy.exc import IntegrityError
 
 from exemploPerfil.ext.database import db
 from exemploPerfil.blueprints.usuarios.models import Usuario
@@ -52,8 +54,12 @@ def atualiza():
     quem = Usuario.query.get(idPraAtualizar)
     quem.nome = nomeNovo
 
-    db.session.add(quem)
-    db.session.commit()
+    try:
+        db.session.add(quem)
+        db.session.commit()
+    except IntegrityError:
+        flash("O nome já é utilizado por alguém.")
+        return redirect(url_for('usuarios.editar', id=idPraAtualizar))    
 
     return redirect(url_for('usuarios.root'))
 
